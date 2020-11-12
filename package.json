@@ -1,0 +1,37 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "My portfolio website",
+  "main": "index.js",
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "start": "npm run develop",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jskway/portfolio.git"
+  },
+  "keywords": [
+    "portfolio",
+    "gatsby"
+  ],
+  "author": "Jack Kim (https://github.com/jskway)",
+  "license": "",
+  "bugs": {
+    "url": "https://github.com/jskway/portfolio/issues"
+  },
+  "homepage": "https://github.com/jskway/portfolio#readme",
+  "dependencies": {
+    "gatsby": "^2.25.4",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  },
+  "devDependencies": {
+    "prettier": "^2.1.2"
+  }
+}
