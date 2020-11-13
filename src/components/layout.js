@@ -1,14 +1,11 @@
 import React from "react"
-import styled from "styled-components"
-
-const Container = styled.main`
-  font-family: "Helvetica Neue", Arial, -apple-system, sans-serif;
-`
+import GlobalStyle from "../styles/globalStyles"
 
 const Layout = ({ children }) => {
   return (
     <>
-      <Container>{children}</Container>
+      <GlobalStyle />
+      <main>{children}</main>
     </>
   )
 }

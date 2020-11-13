@@ -3,7 +3,6 @@ import Layout from "../components/layout"
 import styled from "styled-components"
 
 const H1 = styled.h1`
-  font-family: "Helvetica Neue";
   font-weight: ${props => props.weight || 400};
   font-size: 42px;
   font-style: ${props => props.fontstyle || "normal"};
