@@ -11,11 +11,8 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     color: #555;
     font-family: 'HelveticaNeue', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
-    font-size: 18px;
+    font-size: 62.5%;
     line-height: 1.4;
-
-    @media (min-width: calc(550px + 10vw)) {
-      font-size: 18px;
-    }
 `
+
 export default GlobalStyle
