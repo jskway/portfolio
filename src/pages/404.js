@@ -1,10 +1,10 @@
 import React from "react"
 import Layout from "../components/layout"
 
-const Home = () => (
+const NotFoundPage = () => (
   <Layout>
-    <h1>Home</h1>
+    <h1>404: Not Found</h1>
   </Layout>
 )
 
-export default Home
+export default NotFoundPage
