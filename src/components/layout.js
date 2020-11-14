@@ -2,6 +2,7 @@ import React from "react"
 import styled, { keyframes } from "styled-components"
 import GlobalStyle from "../styles/globalStyles"
 import Header from "./header"
+import { breakpoints } from "../styles/breakpoints"
 
 const FadeOut = keyframes`
   0% {
@@ -20,12 +21,12 @@ const Container = styled.div`
   opacity: 0;
   animation: ${FadeOut} 0.6s 0.3s ease-in-out forwards;
 
-  @media (min-width: 960px) {
+  @media (min-width: ${breakpoints.tabletMin}) {
     max-width: 940px;
     margin: 2rem auto;
   }
 
-  @media (min-width: 1200px) {
+  @media (min-width: ${breakpoints.desktopMin}) {
     max-width: 1200px;
     margin: 2rem auto;
   }

@@ -9,7 +9,7 @@ const GlobalStyle = createGlobalStyle`
   html,
   body {
     margin: 0;
-    color: #555;
+    color: #222;
     font-family: 'HelveticaNeue', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
     font-size: 62.5%;
     line-height: 1.4;

@@ -8,5 +8,13 @@ module.exports = {
         path: `${__dirname}/static/fonts/`,
       },
     },
+    {
+      resolve: `gatsby-plugin-react-svg`,
+      options: {
+        rule: {
+          include: /images/,
+        },
+      },
+    },
   ],
 }

@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { Link } from "gatsby"
+import { breakpoints } from "../styles/breakpoints"
 
 const NavLink = styled(Link)`
   color: #555;
@@ -13,16 +14,21 @@ const NavLink = styled(Link)`
 
   &.current-page {
     color: #222;
-    border-bottom: 2px solid #222;
-    font-weight: bold;
+    font-weight: 600;
   }
 
   &:last-of-type {
     margin-right: 0;
   }
+
+  @media (min-width: ${breakpoints.desktopMin}) {
+    &:last-of-type {
+      margin-right: 1rem;
+    }
+  }
 `
 
-const H1 = styled.h1`
+const Logo = styled.h2`
   color: #222;
   font-weight: 900;
   font-size: 2.4rem;
@@ -37,16 +43,16 @@ const MainHeader = styled.header`
 const Header = () => (
   <MainHeader>
     <NavLink to="/">
-      <H1>JSK</H1>
+      <Logo>JSK</Logo>
     </NavLink>
     <nav>
       <NavLink to="/" activeClassName="current-page">
         HOME
       </NavLink>
-      <NavLink to="/about" activeClassName="current-page">
+      <NavLink to="/projects" activeClassName="current-page">
         PROJECTS
       </NavLink>
-      <NavLink to="/projects" activeClassName="current-page">
+      <NavLink to="/blog" activeClassName="current-page">
         BLOG
       </NavLink>
     </nav>
