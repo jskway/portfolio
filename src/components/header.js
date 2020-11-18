@@ -21,7 +21,7 @@ const NavLink = styled(Link)`
     margin-right: 0;
   }
 
-  @media (min-width: ${breakpoints.desktopMin}) {
+  @media (min-width: ${breakpoints.lg}) {
     &:last-of-type {
       margin-right: 1rem;
     }

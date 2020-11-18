@@ -20,11 +20,11 @@ const H1 = styled.h1`
   font-weight: 600;
   text-align: center;
 
-  @media (min-width: ${breakpoints.tabletMin}) {
+  @media (min-width: ${breakpoints.md}) {
     font-size: 6rem;
   }
 
-  @media (min-width: ${breakpoints.desktopMin}) {
+  @media (min-width: ${breakpoints.lg}) {
     font-size: 6rem;
   }
 `
@@ -33,11 +33,15 @@ const Code = styled(CodeSVG)`
   max-width: 90%;
   margin-top: -100px;
 
-  @media (min-width: 475px) {
+  @media (min-width: ${breakpoints.xs}) {
     margin-top: -50px;
   }
 
-  @media (min-width: ${breakpoints.desktopMin}) {
+  @media (min-width: ${breakpoints.sm}) {
+    margin-top: 0;
+  }
+
+  @media (min-width: ${breakpoints.lg}) {
     max-width: 400px;
   }
 `

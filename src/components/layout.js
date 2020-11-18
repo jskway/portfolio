@@ -21,13 +21,13 @@ const Container = styled.div`
   opacity: 0;
   animation: ${FadeOut} 0.6s 0.3s ease-in-out forwards;
 
-  @media (min-width: ${breakpoints.tabletMin}) {
-    max-width: 940px;
+  @media (min-width: ${breakpoints.md}) {
+    max-width: 90%;
     margin: 2rem auto;
   }
 
-  @media (min-width: ${breakpoints.desktopMin}) {
-    max-width: 1200px;
+  @media (min-width: ${breakpoints.lg}) {
+    max-width: 90%;
     margin: 2rem auto;
   }
 `

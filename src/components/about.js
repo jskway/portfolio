@@ -9,7 +9,7 @@ const AboutContainer = styled.section`
   color: #696969;
   line-height: 1.6;
 
-  @media (min-width: ${breakpoints.tabletMin}) {
+  @media (min-width: ${breakpoints.md}) {
     margin-top: 5%;
   }
 `
@@ -22,7 +22,7 @@ const H2 = styled.h2`
 `
 
 const Section = styled.section`
-  @media (min-width: ${breakpoints.tabletMin}) {
+  @media (min-width: ${breakpoints.md}) {
     max-width: 70%;
   }
 `
