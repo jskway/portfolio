@@ -20,6 +20,7 @@ const H2 = styled.h2`
 
 const H3 = styled.h3`
   color: #222;
+  margin-bottom: 10px;
 `
 const SkillsWrapper = styled.div`
   display: flex;
@@ -31,11 +32,19 @@ const SkillsWrapper = styled.div`
 
   div {
     margin-right: 5%;
-    margin-top: 2%;
+    margin-top: 5%;
 
     @media (min-width: ${breakpoints.md}) {
       margin-top: 0;
     }
+  }
+
+  ul {
+    padding-left: 30px;
+  }
+
+  ul li {
+    list-style-type: circle;
   }
 `
 
