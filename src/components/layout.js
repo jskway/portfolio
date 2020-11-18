@@ -2,6 +2,7 @@ import React from "react"
 import styled, { keyframes } from "styled-components"
 import GlobalStyle from "../styles/globalStyles"
 import Header from "./header"
+import Footer from "./footer"
 import { breakpoints } from "../styles/breakpoints"
 
 const FadeOut = keyframes`
@@ -16,19 +17,20 @@ const FadeOut = keyframes`
 
 const Container = styled.div`
   min-height: 100vh;
+  max-width: 95%;
   margin: 0.75rem auto;
   padding: 2rem;
   opacity: 0;
   animation: ${FadeOut} 0.6s 0.3s ease-in-out forwards;
 
   @media (min-width: ${breakpoints.md}) {
-    max-width: 90%;
+    max-width: 900px;
+    padding: 2rem 5%;
     margin: 2rem auto;
   }
 
   @media (min-width: ${breakpoints.lg}) {
-    max-width: 90%;
-    margin: 2rem auto;
+    max-width: 1300px;
   }
 `
 
@@ -39,6 +41,7 @@ const Layout = ({ children }) => {
       <Container>
         <Header />
         <main>{children}</main>
+        <Footer />
       </Container>
     </>
   )

@@ -50,7 +50,7 @@ const SkillsWrapper = styled.div`
 
 const Skills = () => (
   <SkillsContainer>
-    <H2>My Skills</H2>
+    <H2>MY SKILLS</H2>
     <SkillsWrapper>
       <div>
         <H3>Languages</H3>

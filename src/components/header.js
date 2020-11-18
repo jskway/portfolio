@@ -11,10 +11,20 @@ const NavLink = styled(Link)`
   margin: 0 0.5rem 0 0;
   padding: 0.5rem;
   text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: 0.3s;
+
+  :hover {
+    border-bottom: 2px solid #222;
+  }
 
   &.current-page {
     color: #222;
     font-weight: 600;
+  }
+
+  &.logo {
+    border: none;
   }
 
   &:last-of-type {
@@ -42,7 +52,7 @@ const MainHeader = styled.header`
 
 const Header = () => (
   <MainHeader>
-    <NavLink to="/">
+    <NavLink to="/" className="logo">
       <Logo>JSK</Logo>
     </NavLink>
     <nav>
