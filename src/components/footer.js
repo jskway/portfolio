@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import { breakpoints } from "../styles/breakpoints"
 
 const FooterContainer = styled.footer`
   display: flex;
@@ -9,7 +10,11 @@ const FooterContainer = styled.footer`
   font-size: 1.6rem;
   color: #696969;
   text-align: center;
-  margin-bottom: 5%;
+  margin: 30% auto 5%;
+
+  @media (min-width: ${breakpoints.md}) {
+    margin: 10% auto 5%;
+  }
 
   p {
     margin-top: 40px;
