@@ -1,10 +1,11 @@
 import React from "react"
 import Layout from "../components/layout"
+import Projects from "../components/projects"
 
-const Projects = () => (
+const ProjectsPage = ({ location }) => (
   <Layout>
-    <h1>Projects</h1>
+    <Projects location={location} />
   </Layout>
 )
 
-export default Projects
+export default ProjectsPage

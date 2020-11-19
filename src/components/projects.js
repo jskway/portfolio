@@ -32,7 +32,7 @@ const Div = styled.div`
   }
 `
 
-const Projects = () => {
+const Projects = ({ location }) => {
   const projects = useProjects()
 
   return (
@@ -40,7 +40,11 @@ const Projects = () => {
       <H2>PROJECTS</H2>
       <Div>
         {projects.map(project => (
-          <ProjectPreview key={project.slug} project={project} />
+          <ProjectPreview
+            key={project.slug}
+            project={project}
+            location={location}
+          />
         ))}
       </Div>
     </ProjectsContainer>

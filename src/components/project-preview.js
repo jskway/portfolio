@@ -1,5 +1,5 @@
 import React from "react"
-import { Link } from "gatsby"
+import { Link, withPrefix } from "gatsby"
 import styled from "styled-components"
 import Image from "gatsby-image"
 import { breakpoints } from "../styles/breakpoints"
@@ -31,10 +31,12 @@ const ProjectLink = styled(Link)`
   font-weight: 600;
 `
 
-const ProjectPreview = ({ project }) => {
+const ProjectPreview = ({ project, location }) => {
+  const isHomepage = location.pathname === withPrefix("/")
+
   return (
     <Article>
-      <Link to={project.slug}>
+      <Link to={isHomepage ? `/projects/${project.slug}` : project.slug}>
         <ProjectImage fluid={project.image.sharp.fluid} alt={project.title} />
       </Link>
       <div>

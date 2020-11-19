@@ -41,6 +41,7 @@ const SkillsWrapper = styled.div`
 
   ul {
     padding-left: 30px;
+    line-height: 2;
   }
 
   ul li {

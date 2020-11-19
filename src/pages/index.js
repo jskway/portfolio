@@ -6,12 +6,12 @@ import Skills from "../components/skills"
 import Projects from "../components/projects"
 import CallToAction from "../components/call-to-action"
 
-const Home = () => (
+const Home = ({ location }) => (
   <Layout>
     <Hero />
     <About />
     <Skills />
-    <Projects />
+    <Projects location={location} />
     <CallToAction />
   </Layout>
 )
