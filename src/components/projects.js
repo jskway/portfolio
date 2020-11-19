@@ -1,6 +1,8 @@
 import React from "react"
 import styled from "styled-components"
 import { breakpoints } from "../styles/breakpoints"
+import useProjects from "../hooks/use-projects"
+import ProjectPreview from "./project-preview"
 
 const ProjectsContainer = styled.section`
   display: flex;
@@ -15,13 +17,34 @@ const H2 = styled.h2`
   font-size: 2.8rem;
   font-weight: 600;
   color: #222;
-  margin-bottom: 3%;
+  margin-bottom: 50px;
+
+  @media (min-width: ${breakpoints.lg}) {
+    margin-bottom: 5%;
+  }
+`
+const Div = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: ${breakpoints.lg}) {
+    flex-direction: row;
+  }
 `
 
-const Projects = () => (
-  <ProjectsContainer>
-    <H2>PROJECTS</H2>
-  </ProjectsContainer>
-)
+const Projects = () => {
+  const projects = useProjects()
+
+  return (
+    <ProjectsContainer>
+      <H2>PROJECTS</H2>
+      <Div>
+        {projects.map(project => (
+          <ProjectPreview key={project.slug} project={project} />
+        ))}
+      </Div>
+    </ProjectsContainer>
+  )
+}
 
 export default Projects

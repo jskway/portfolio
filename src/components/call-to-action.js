@@ -3,8 +3,6 @@ import styled from "styled-components"
 import { breakpoints } from "../styles/breakpoints"
 
 const CTAContainer = styled.section`
-  font-size: 1.6rem;
-  color: #696969;
   margin-bottom: 25%;
 
   @media (min-width: ${breakpoints.md}) {
@@ -19,16 +17,17 @@ const CTAContainer = styled.section`
 const H2 = styled.h2`
   font-size: 2.8rem;
   font-weight: 600;
-  color: #222;
-  margin-bottom: 2%;
+  margin-bottom: 5%;
+
+  @media (min-width: ${breakpoints.sm}) {
+    margin-bottom: 2%;
+  }
 `
 
 const Link = styled.a`
-  color: #222;
   border-bottom: 2px solid #222;
   transition: 0.3s;
   padding-bottom: 3px;
-  text-decoration: none;
   font-size: 1.8rem;
   font-weight: 600;
 

@@ -5,9 +5,7 @@ import { breakpoints } from "../styles/breakpoints"
 const AboutContainer = styled.section`
   display: flex;
   flex-direction: column;
-  font-size: 1.6rem;
   color: #696969;
-  line-height: 1.6;
 
   @media (min-width: ${breakpoints.md}) {
     margin-top: 5%;
@@ -17,7 +15,6 @@ const AboutContainer = styled.section`
 const H2 = styled.h2`
   font-size: 2.8rem;
   font-weight: 600;
-  color: #222;
   margin-bottom: 3%;
 `
 

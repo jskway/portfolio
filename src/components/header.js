@@ -39,9 +39,7 @@ const NavLink = styled(Link)`
 `
 
 const Logo = styled.h2`
-  color: #222;
   font-weight: 900;
-  font-size: 2.4rem;
 `
 
 const MainHeader = styled.header`
