@@ -10,7 +10,11 @@ const ProjectsContainer = styled.section`
   font-size: 1.6rem;
   color: #696969;
   line-height: 1.6;
-  margin: 10% auto;
+  margin: 20% auto 10%;
+
+  @media (min-width: ${breakpoints.lg}) {
+    margin: 10% auto;
+  }
 `
 
 const H2 = styled.h2`

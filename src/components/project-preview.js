@@ -41,10 +41,16 @@ const ProjectPreview = ({ project, location }) => {
       </Link>
       <div>
         <H3>
-          <Link to={project.slug}>{project.title}</Link>
+          <Link to={isHomepage ? `/projects/${project.slug}` : project.slug}>
+            {project.title}
+          </Link>
         </H3>
         <p>{project.description}</p>
-        <ProjectLink to={project.slug}>View Project &rarr;</ProjectLink>
+        <ProjectLink
+          to={isHomepage ? `/projects/${project.slug}` : project.slug}
+        >
+          View Project &rarr;
+        </ProjectLink>
       </div>
     </Article>
   )

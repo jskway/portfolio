@@ -3,10 +3,10 @@ import styled from "styled-components"
 import { breakpoints } from "../styles/breakpoints"
 
 const CTAContainer = styled.section`
-  margin-bottom: 25%;
+  margin: 20% auto 25%;
 
   @media (min-width: ${breakpoints.md}) {
-    margin-bottom: 15%;
+    margin: 10% auto 15%;
   }
 
   p {

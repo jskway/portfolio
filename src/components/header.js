@@ -57,10 +57,14 @@ const Header = () => (
       <NavLink to="/" activeClassName="current-page">
         HOME
       </NavLink>
-      <NavLink to="/projects" activeClassName="current-page">
+      <NavLink
+        to="/projects"
+        activeClassName="current-page"
+        partiallyActive={true}
+      >
         PROJECTS
       </NavLink>
-      <NavLink to="/blog" activeClassName="current-page">
+      <NavLink to="/blog" activeClassName="current-page" partiallyActive={true}>
         BLOG
       </NavLink>
     </nav>
