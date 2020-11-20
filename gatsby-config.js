@@ -1,7 +1,16 @@
 module.exports = {
+  siteMetadata: {
+    title: `Jack Kim – Software Engineer`,
+    description: `My personal portfolio website`,
+    social: {
+      twitter: `jskway`,
+    },
+  },
+
   plugins: [
     `gatsby-plugin-styled-components`,
     `gatsby-transformer-sharp`,
+    `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-mdx`,

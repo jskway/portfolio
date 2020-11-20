@@ -3,6 +3,7 @@ import styled from "styled-components"
 import { Link, graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import Layout from "../components/layout"
+import SEO from "../components/seo"
 
 export const query = graphql`
   query($slug: String!) {
@@ -48,6 +49,7 @@ const H5 = styled.h5`
 const PostTemplate = ({ data: { mdx: post } }) => {
   return (
     <Layout>
+      <SEO />
       <H1>{post.frontmatter.title}</H1>
       <H5>
         <em>{post.frontmatter.date}</em>

@@ -3,6 +3,7 @@ import styled from "styled-components"
 import { Link, graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import Layout from "../components/layout"
+import SEO from "../components/seo"
 
 export const query = graphql`
   query($slug: String!) {
@@ -40,6 +41,7 @@ const H1 = styled.h1`
 const ProjectTemplate = ({ data: { mdx: project } }) => {
   return (
     <Layout>
+      <SEO />
       <H1>{project.frontmatter.title}</H1>
       <MDXRenderer>{project.body}</MDXRenderer>
       <BackLink to="/projects">&larr; back to all projects</BackLink>
