@@ -21,6 +21,10 @@ const GlobalStyle = createGlobalStyle`
     color: #222;
   }
 
+  h1 {
+    font-size: 3.6rem;
+  }
+
   h2 {
     font-size: 2.4rem;
   }

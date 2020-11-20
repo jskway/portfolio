@@ -1,10 +1,10 @@
 import React from "react"
 import styled from "styled-components"
+import usePosts from "../hooks/use-posts"
 import { breakpoints } from "../styles/breakpoints"
-import useProjects from "../hooks/use-projects"
-import ProjectPreview from "./project-preview"
+import PostPreview from "./post-preview"
 
-const ProjectsContainer = styled.section`
+const PostsContainer = styled.section`
   display: flex;
   flex-direction: column;
   font-size: 1.6rem;
@@ -27,32 +27,25 @@ const H2 = styled.h2`
     margin-bottom: 5%;
   }
 `
+
 const Div = styled.div`
   display: flex;
   flex-direction: column;
-
-  @media (min-width: ${breakpoints.lg}) {
-    flex-direction: row;
-  }
 `
 
-const Projects = ({ location }) => {
-  const projects = useProjects()
+const Posts = ({ location }) => {
+  const posts = usePosts()
 
   return (
-    <ProjectsContainer>
-      <H2>PROJECTS</H2>
+    <PostsContainer>
+      <H2>BLOG</H2>
       <Div>
-        {projects.map(project => (
-          <ProjectPreview
-            key={project.slug}
-            project={project}
-            location={location}
-          />
+        {posts.map(post => (
+          <PostPreview key={post.slug} post={post} location={location} />
         ))}
       </Div>
-    </ProjectsContainer>
+    </PostsContainer>
   )
 }
 
-export default Projects
+export default Posts

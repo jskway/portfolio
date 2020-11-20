@@ -1,4 +1,5 @@
 import React from "react"
+import styled from "styled-components"
 import { Link, graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import Layout from "../components/layout"
@@ -15,13 +16,33 @@ export const query = graphql`
   }
 `
 
+const BackLink = styled(Link)`
+  display: inline-block;
+  color: #222;
+  text-decoration: none;
+  border-bottom: 2px solid #222;
+  padding-bottom: 3px;
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-top: 50px;
+  transition: 0.3s;
+
+  :hover {
+    border-bottom: 2px solid transparent;
+  }
+`
+
+const H1 = styled.h1`
+  font-size: 2.8rem;
+  margin-top: 50px;
+`
+
 const ProjectTemplate = ({ data: { mdx: project } }) => {
   return (
     <Layout>
-      <h1>{project.frontmatter.title}</h1>
-      <p>Posted by {project.frontmatter.author}</p>
+      <H1>{project.frontmatter.title}</H1>
       <MDXRenderer>{project.body}</MDXRenderer>
-      <Link to="/">&larr; back to all projects</Link>
+      <BackLink to="/projects">&larr; back to all projects</BackLink>
     </Layout>
   )
 }

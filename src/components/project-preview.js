@@ -29,6 +29,13 @@ const H3 = styled.h3`
 `
 const ProjectLink = styled(Link)`
   font-weight: 600;
+  padding-bottom: 3px;
+  border-bottom: 2px solid #222;
+  transition: 0.3s;
+
+  :hover {
+    border-bottom: 2px solid transparent;
+  }
 `
 
 const ProjectPreview = ({ project, location }) => {
