@@ -36,7 +36,6 @@ const BackLink = styled(Link)`
 
 const H1 = styled.h1`
   font-size: 4.2rem;
-  font-weight: 400;
   margin-top: 50px;
   margin-bottom: 0;
 `

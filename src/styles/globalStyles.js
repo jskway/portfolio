@@ -12,7 +12,6 @@ const GlobalStyle = createGlobalStyle`
     color: #222;
     font-family: 'HelveticaNeue', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
     font-size: 62.5%;
-    line-height: 1.4;
 
   h1,
   h2,
@@ -33,12 +32,15 @@ const GlobalStyle = createGlobalStyle`
   p {
     color: #696969;
     font-size: 1.6rem;
-    line-height: 1.6;
 
     a {
       color: #222;
       text-decoration: none;
     }
+  }
+
+  p {
+    line-height: 150%;
   }
 `
 

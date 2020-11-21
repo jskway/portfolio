@@ -10,21 +10,21 @@ const PostsContainer = styled.section`
   font-size: 1.6rem;
   color: #696969;
   line-height: 1.6;
-  margin: 20% auto 10%;
+  margin: 10% auto 10%;
 
   @media (min-width: ${breakpoints.sm}) {
-    margin: 5% auto;
+    margin: 2% auto;
   }
 `
 
-const H2 = styled.h2`
-  font-size: 2.8rem;
+const H1 = styled.h1`
+  font-size: 3.6rem;
   font-weight: 600;
   color: #222;
   margin-bottom: 50px;
 
   @media (min-width: ${breakpoints.lg}) {
-    margin-bottom: 5%;
+    margin-bottom: 2%;
   }
 `
 
@@ -38,7 +38,7 @@ const Posts = ({ location }) => {
 
   return (
     <PostsContainer>
-      <H2>BLOG</H2>
+      <H1>LATEST POSTS</H1>
       <Div>
         {posts.map(post => (
           <PostPreview key={post.slug} post={post} location={location} />

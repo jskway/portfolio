@@ -1,7 +1,6 @@
 import React from "react"
 import { Link, withPrefix } from "gatsby"
 import styled from "styled-components"
-import { breakpoints } from "../styles/breakpoints"
 
 const Article = styled.article`
   display: flex;

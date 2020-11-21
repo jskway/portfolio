@@ -4,6 +4,8 @@ import GlobalStyle from "../styles/globalStyles"
 import Header from "./header"
 import Footer from "./footer"
 import { breakpoints } from "../styles/breakpoints"
+import { MDXProvider } from "@mdx-js/react"
+import * as projectComponents from "./projects/index.js"
 
 const FadeOut = keyframes`
   0% {
@@ -40,7 +42,9 @@ const Layout = ({ children }) => {
       <GlobalStyle />
       <Container>
         <Header />
-        <main>{children}</main>
+        <MDXProvider components={projectComponents}>
+          <main>{children}</main>
+        </MDXProvider>
         <Footer />
       </Container>
     </>
