@@ -43,8 +43,8 @@ const CallToAction = () => (
       Feel free to reach out if you're looking for a developer, have a question,
       or just want to connect.
     </p>
-    <Link title="Email - Jack Kim" href="mailto: jackskim29@gmail.com">
-      jackskim29@gmail.com
+    <Link title="Email - Jack Kim" href="mailto: jack@jackkim.dev">
+      jack@jackkim.dev
     </Link>
   </CTAContainer>
 )

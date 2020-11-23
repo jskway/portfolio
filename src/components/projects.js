@@ -45,6 +45,7 @@ const Div = styled.div`
 
   @media (min-width: ${breakpoints.lg}) {
     flex-direction: row;
+    justify-content: space-between;
   }
 `
 

@@ -8,9 +8,10 @@ const Article = styled.article`
   display: flex;
   flex-direction: column;
   max-width: 90%;
+  margin-bottom: 70px;
 
   @media (min-width: ${breakpoints.lg}) {
-    min-width: 500px;
+    max-width: 50%;
   }
 
   p {

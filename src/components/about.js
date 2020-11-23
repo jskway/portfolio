@@ -33,23 +33,29 @@ const About = () => (
     <H2>ABOUT</H2>
     <Section>
       <P>
-        In April 2019, I committed to becoming a software engineer by enrolling
-        in Lambda School and graduated from their part-time (18-month) Full
-        Stack Web & Computer Science track in August 2020.
+        3 years ago, I came across a HTML, CSS, and JavaScript website tutorial.
+        Instantly, I became fascinated with coding and the ability to build
+        interactive apps. In September 2020, I graduated from Lambda School's
+        part-time (18mo) Full Stack Web & Computer Science program.
       </P>
 
       <P>
         I love perfecting the details of my craft and apply creativity and
         rationality to everything I do. I believe the most challenging goals can
-        be accomplished with enough insight, understanding, and desire. I aim
-        for clarity of understanding to achieve consistent, high performance.
+        be accomplished with enough insight, understanding, and desire.
       </P>
 
       <P>
-        My mission is to provide users with software that simplifies and removes
-        pain points from their lives while respecting their privacy. I'm aiming
-        to contribute scalable, robust, and maintainable code to a team that
-        aligns with this mission.
+        I'm aiming to contribute scalable, robust, and maintainable code to a
+        company & team that provides users with an amazing experience.
+      </P>
+
+      <P>
+        In my free time, I enjoy writing, boxing, and listening to synthwave{" "}
+        <span role="img" aria-label="headphone emoji">
+          🎧
+        </span>{" "}
+        .
       </P>
     </Section>
   </AboutContainer>

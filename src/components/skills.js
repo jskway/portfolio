@@ -67,10 +67,12 @@ const Skills = () => (
         <H3>Technologies</H3>
         <ul>
           <li>React.js</li>
+          <li>Redux</li>
           <li>Node</li>
+          <li>GraphQL</li>
+          <li>Gatsby</li>
           <li>Git/Github</li>
           <li>OAuth 2.0</li>
-          <li>Redux</li>
         </ul>
       </div>
       <div>
