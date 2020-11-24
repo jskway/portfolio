@@ -36,12 +36,12 @@ const ProjectLink = styled(Link)`
   display: inline-block;
   font-weight: 600;
   padding-bottom: 0;
-  border-bottom: 2px solid #222;
+  border-bottom: 2px solid transparent;
   transition: 0.3s;
   margin-top: 10px;
 
   :hover {
-    border-bottom: 2px solid transparent;
+    border-bottom: 2px solid #222;
   }
 `
 
