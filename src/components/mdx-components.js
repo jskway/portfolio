@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import { breakpoints } from "../styles/breakpoints"
 
-export const ProjectWrapper = styled.section`
+export const MDXWrapper = styled.section`
   h2 {
     margin: 50px 0 20px;
   }
