@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { breakpoints } from "../../styles/breakpoints"
+import { breakpoints } from "../styles/breakpoints"
 
 export const ProjectWrapper = styled.section`
   h2 {
@@ -65,6 +65,10 @@ export const ProjectWrapper = styled.section`
     li {
       margin: 15px 0;
     }
+  }
+
+  img {
+    margin: 50px 0;
   }
 `
 
