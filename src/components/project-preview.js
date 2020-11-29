@@ -21,11 +21,21 @@ const Article = styled.article`
       margin: 1% 0;
     }
   }
+
+  :hover {
+    .project-link {
+      border-bottom: 2px solid #222;
+    }
+  }
 `
 
 const ProjectImage = styled(Image)`
   max-width: 90%
   height: auto;
+
+  @media (min-width: ${breakpoints.lg}) {
+    max-width: 450px;
+  }
 `
 
 const H3 = styled.h3`
@@ -39,10 +49,6 @@ const ProjectLink = styled(Link)`
   border-bottom: 2px solid transparent;
   transition: 0.3s;
   margin-top: 10px;
-
-  :hover {
-    border-bottom: 2px solid #222;
-  }
 `
 
 const ProjectPreview = ({ project, location }) => {
@@ -61,6 +67,7 @@ const ProjectPreview = ({ project, location }) => {
         </H3>
         <p>{project.description}</p>
         <ProjectLink
+          className="project-link"
           to={isHomepage ? `/projects/${project.slug}` : project.slug}
         >
           View Project &rarr;
