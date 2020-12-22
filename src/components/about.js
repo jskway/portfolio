@@ -35,7 +35,6 @@ const About = () => (
       <P>
         In 2017, I came across an HTML, CSS, and JavaScript website tutorial.
       </P>
-
       <P>
         I became fascinated with the ability to turn code into functional,
         interactive applications. A year later, I still found myself coding for
@@ -43,13 +42,11 @@ const About = () => (
         enrolled in Lambda School. In Sept 2020, I graduated from Lambda
         School's part-time (18mo) Full Stack Web & Computer Science program.
       </P>
-
       <P>
-        I love perfecting the details of my craft – applying creativity and
-        rationality to everything I do. I believe the most challenging goals can
-        be accomplished with enough desire, insight, and understanding.
+        I'm devoted to perfecting my craft and apply creativity and rationality
+        to everything I do. I believe the most challenging goals can be
+        accomplished with enough dedication, insight, and understanding.
       </P>
-
       <P>
         I'm aiming to contribute scalable, robust, and maintainable code to help
         build software that empowers individuals and protects their privacy &
