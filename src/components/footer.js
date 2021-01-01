@@ -56,13 +56,6 @@ const Footer = () => (
         linkedin
       </SMLink>
       <SMLink
-        title="Twitter - jskway"
-        target="_blank"
-        href="https://www.twitter.com/jskway"
-      >
-        twitter
-      </SMLink>
-      <SMLink
         title="Resume - Jack Kim"
         target="_blank"
         href="https://drive.google.com/file/d/1knN65g0Ig1BOul-sj4YUwyKk_OTC5o8E/view?usp=sharing"
