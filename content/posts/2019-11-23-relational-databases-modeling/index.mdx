@@ -1,0 +1,217 @@
+---
+title: Relational Databases & Data Modeling
+date: 2019-11-23
+slug: relational-databases-modeling
+template: post
+author: Jack Kim
+tags: ['RDBMS', 'SQL', 'Knex', 'data normalization', 'lambda school']
+excerpt: "The past couple of weeks at Lambda School were the most..."
+---
+
+<MDXWrapper>
+
+
+<ImageWrapper>
+
+![sqlite logo](./images/sqlite_logo.png) 
+
+</ImageWrapper>
+
+<ImageWrapper>
+
+![knex logo](./images/knex_logo.png)
+
+</ImageWrapper>
+
+
+The past couple of weeks at Lambda School were the most challenging for me
+so far.
+
+However, our instructor Sean Kirkby did a great job explaining the material
+thoroughly and breaking down concepts to make it easier to understand.
+
+I learned:
+- The basics of relational Databases
+- The basics of SQL
+- How to use Knex.js to make queries, migrations and seeds
+- How to use the SQLite RMDBS and SQLite Studio
+- What foreign keys are and how to use them to make multi-table JOIN queries
+- The principles of data normalization
+- How to model data using DbDesigner
+
+## Notes
+
+### Relational Databases & SQL
+
+**Databases** are collections of data organized for easy retrieval and
+manipulation.
+
+A database is often necessary because our application needs data persistence
+(the data needs to be safely stored and remain untouched unless intentionally
+modified).
+
+**Relational databases** are databases that store the data in tables.
+
+Tables are made up of rows and columns, where each column is a field type and
+each row is a single record in the table.
+
+Tables often have a primary key column, which is used to uniquely identify each
+row.
+
+**SQL** (Structured Query Language)  is the standard language used to manage
+databases and the data within them.
+
+INSERT, SELECT, UPDATE and DELETE are the CRUD commands for SQL.
+
+Examples:
+```SQL
+SELECT first_name, last_name, salary
+  FROM Employees;
+
+INSERT INTO Employees (first_name, last_name, salary)
+  VALUES ('Seong', 'Kim', 100000);
+
+UPDATE Employees
+  SET salary  = 1000000
+  WHERE first_name = 'Seong'
+
+DELETE FROM Employees
+  WHERE first_name = 'Seong'
+```
+
+*Note: In an actual query, we would use the primary key (usually an ID) instead
+of the first_name value to UPDATE and DELETE as there could be employees with
+the same first name*
+
+### Knex
+
+**Knex.js** is a query builder - a JavaScript library that allow us to interface
+with a database using a JS version of SQL.
+
+The Knex version of the above examples would look like:
+```javascript
+db('Employees')
+  .select('first_name', 'last_name', 'salary');
+
+db('Employees')
+  .insert({ first_name: 'Seong', last_name: 'Kim', salary: 100000 });
+
+db('Employees')
+  .where({ first_name: 'Seong' })
+  .update({ salary: 1000000 });
+
+db('Employees')
+  .where({ first_name: 'Seong' })
+  .del();
+```
+
+<br />
+
+### SQLite & Schemas
+
+A **DBMS** (Database management system) is a specialized software that allows us
+to create, access and manage our databases.
+
+For relational databases, some examples of RDBMSs are Postgres, SQLite, MySql
+and Oracle.
+
+SQLite is a is a lightweight RDBMS (*not a database*).
+
+A **database schema** is the shape of our database.  It defines what tables
+should exist, which columns should be in those tables, and any restrictions on
+each column.
+
+When designing a single table, we need to ask three things:
+
+- What fields (or columns) are present? (eg. id, name, address, etc.)
+- What type of data do we expect for each field? (eg. integer, text, null, etc.)
+- Are there other restrictions needed for each column? (eg. default value, not
+    null, unique, primary key)
+
+In Knex can use migrations to define any changes to the structure of our
+database, such as adding new tables and modifying existing tables.
+
+We can use seeds to prepopulate our database with sample data.
+
+### Multi-table Queries
+
+** Foreign keys ** are type of table field used to connect a record in one table
+to a record in another table.  They're often integers that identify (rather than
+store) data.
+
+We can use a SQL `JOIN` command with foreign keys to query data from multiple
+tables using a single `SELECT` command.
+
+Eg. 
+
+```sql
+SELECT * FROM Employees
+  JOIN Departments
+  ON Employees.department_id = Departments.id
+```
+The `JOIN` command joins every record in a table with a record in the second
+table and creates a temporary table with every record.  (So if we had ten rows
+in one table and ten rows in the second table, there would be 100 rows in the
+temporary `JOIN`ed table.) The `ON` command filters through this temporary table
+and only `SELECT`s from the rows that meet the clause.  So in the example above,
+we would only get Employees where `Employees.department_id` (foreign
+key) is equal to `Deparments.id`
+
+### Data Modeling
+
+**Data Normalization** is the process of designing or refactoring databases for
+maximum consistency and minimum redundancy.  
+
+
+**Normalization Guidelines:**
+- Each record has a primary key.
+- No fields are repeated.
+- All fields relate directly to the key data.
+- Each field entry contains a single data point.
+- There are no redundant entries.
+
+When modeling the data for multiple tables, there are different relationships
+between the tables.
+
+**One to One**
+
+Lets say we want to model employees and social security numbers.
+
+Each employee has one SSN, and each SSN can be assigned to one employee.
+
+This data can be represented in two tables: `employees` and
+`social_security_numbers`.  (We can actually use one table, but sometimes it's
+good to keep separate concerns in separate tables.)
+
+We can use a foreign key in one table to link to the other table.
+
+**One to Many**
+
+Lets say we want to model employees and office location.
+
+Each employee can have one office, but one office can have many employees.
+
+This can also be represented in two tables: `employees` and `offices`.  But for one
+to many relationships, we want to foreign key to be in the 'many' table - so in
+this case we want to have a `office_id` foreign key in the `employees` table.
+
+**Many to Many**
+
+If we wanted to model `employees` and `projects`, each employee can have many
+projects, and each project can have many employees.
+
+This is a many to many relationship.  
+
+In this case, we would need to introduce an intermediary table that hold foreign
+keys that reference the primary key on both `employees` and `projects`.
+
+---
+
+Overall it was a tough but rewarding two weeks.  I'm enjoying the process of
+thinking about how to model data and build out the back-end of an application.  
+
+I'm looking forward to the Authentication and Testing section coming up, but next
+week is Thanksgiving break for Lambda School.  I'll use the time to brush up on
+my CS fundamentals.
+
+</MDXWrapper>

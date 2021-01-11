@@ -1,0 +1,114 @@
+---
+title: Redux
+date: 2019-10-03
+slug: redux
+template: post
+author: Jack Kim
+tags: ['react', 'redux', 'lambda school']
+excerpt: "Since my last post, I've been learning and implementing Redux..."
+---
+
+<MDXWrapper>
+
+<ImageWrapper>
+
+![redux logo](./images/logo-redux.png)
+
+</ImageWrapper>
+
+Since my last post, I've been learning and implementing Redux.
+
+The Lambda School module covered:
+- Context API
+- The Reducer Pattern
+- Redux
+- Async Redux
+
+Brian, our instructor, mentioned to us that the Redux section is where students tend to struggle the most.  This was true for me as well.
+
+We started off learning about the Context API.  The Context API is built into React. From the docs:
+
+*In a typical React application, data is passed top-down (parent to child) via props, but this can be cumbersome for certain types of props (e.g. locale preference, UI theme) that are required by many components within an application. Context provides a way to share values like these between components without having to explicitly pass a prop through every level of the tree.*  
+
+Using the Context API was fairly straightforward and I liked how it solves the issue of prop-drilling (passing props down through intermediate components).
+
+**Redux** is a state container for JS apps. I always assumed it was built for React since I saw it paired as 'React/Redux' so frequently, but apparently it can be used with any JavaScript application!
+
+The three core principles of Redux:
+1. Single Source of Truth - all application level state is represented by a
+   single JS object known as the store
+2. Application State is Immutable - we never mutate the original store
+3. Pure Functions (reducers) Change our State - they take in our current state
+   and an 'action' and return a copy of the state
+
+The 'flow' of redux looks like this:
+
+<ImageWrapper>
+
+![redux flow](./images/redux-flow.gif)
+
+</ImageWrapper>
+
+**Actions** are objects that represent events, which usually comes from user interactions with our view/UI.  They are represented by an object with `type` and `payload` properties. `type` specifies the type of action and `payload` holds any values that were passed in with the event.  Actions are created by action creators (functions that return actions).
+
+Example:.
+```javascript
+export const UPDATE_NAME = 'UPDATE_NAME';
+
+// Action creator
+export const updateName = (newName) => {
+  // returns an action 
+  return {
+    type: UPDATE_NAME,
+    payload: newName
+  }
+} 
+```
+
+We declare our action types as consts and export them (to our reducers) for consistency and better error handling in case we want to rename them later. 
+
+**Reducers** are pure functions that receive an action and current state as arguments, and return a new (updated) state.  The new state is sent to our store.
+
+
+Example:
+```javascript
+import UPDATE_NAME from './<path here>'
+
+function reducer(state=initialState, action) {
+  switch(action.type) {
+    case UPDATE_NAME: 
+      return {
+        ...state,
+        name: action.payload
+      }
+    default:
+      return state;
+  }
+}
+```
+
+We use a `switch` statement because reducers tend be passed in different types of actions (which will return different new states to the store).
+
+The **Store** is an object that holds all of our application level state.  It will only be updated when a reducer passes along a new state object.
+
+What about *middleware*?  
+
+**Middleware** is used to essentially 'intercept' some process, run a function at the intercept point, and then (usually) continue the process.  In Redux, we use middleware to intercept actions **before** they're continue to the reducers.
+
+One useful middleware library is `redux-logger`.  It will `console.log` the
+actions, the state tree before the action is passed to the reducer, and the
+resulting state tree after the action is passed to the reducer.
+
+Another one is `redux-thunk`.  This one allows us to make our action -> reducer
+flow asynchronous so we can make API calls from our action creators.
+
+---
+
+Overall, learning and implementing Redux was difficult but rewarding.  I can understand the benefits of keeping our app state immutable and in a centralized location - especially as our app grows increasingly complex.
+
+The current Lambda School module I'm working on is going over React testing, Client-side Authentication, Deployment, and more HTTP/AJAX requests.  
+
+I've also been going through Tyler McGinnis' React course.  He goes over stuff not covered in Lambda School such as setting up a React app using npm, Webpack, Babel, etc. instead of `create-react-app`.  I was always curious how to do that so it's been awesome to find a resource that goes over it thoroughly! 
+
+
+</MDXWrapper>

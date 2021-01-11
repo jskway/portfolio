@@ -1,0 +1,148 @@
+---
+title: React Router
+date: 2019-08-13
+slug: react-router
+template: post
+author: Jack Kim
+tags: ['react', 'web development', 'lambda school']
+excerpt: "This has been the toughest week at Lambda School for me so far. What was so hard about it?..." 
+---
+
+<MDXWrapper>
+
+This has been the toughest week at Lambda School for me so far. What was so hard about it? Learning React router.
+
+I managed to finish the projects and get the apps working, but didn't fully understand _why_ or _how_ everything worked. This post is a recap of my notes to solidify my knowledge.
+
+**Routing:** the process of determining what code to run when a URL is requested
+
+A _**server-side route**_ is when a user clicks on a link and new page is requested from the server. It completely discards the old page before serving the new document to the user.  
+  
+Pros of server-side routing:  
+- A server-side route will only request the page that's needed  
+- Better for SEO (currently)
+
+Cons of server-side routing:  
+- Every request results in a full-page refresh, which means unnecessary data is being requested (eg. header/footer)  
+- It can take a while for the page to be rendered (if the document is large or internet is slow)
+
+A _**client-side route**_ happens when the route is handled internally by the JavaScript that is loaded on the page. When a user clicks on a link, the URL changes but the request to the server is prevented. The whole page won't refresh - there are just some elements inside the application that will change.  
+  
+<u>Pros of client-side routing:</u>
+- Routing between views is generally faster because less data is processed  
+- Smooth transitions and animations between views is easier to implement  
+  
+<u>Cons of client-side routing:</u>  
+- The whole website or application needs to be loaded on the first request (and the user may not need all the data)  
+- It requires more setup work or even a library  
+- Less optimized for SEO
+
+**React Router** is declarative style routing for React applications. 
+
+The `Route` component is how we declare what components will be mounted based on what URLs are requested by the user. It takes in a few props:  
+- `path`: the React component will trigger when the URL matches this path  
+- `component`: the component you want React to mount when the URL matches the requested path
+
+Examples:
+
+```javascript
+<Route path="/" component={Home}/>
+<Route path="/contact" component={Contact}/>
+<Route path="/about" component={About}/>
+```
+
+`exact` - by placing **exact** on a `<Route />` component, we are saying that the specific component will be requested only if the path matches _exactly_ what was requested
+
+Eg. `<Route exact path="/" component={Home}/>`
+
+**The Link component:**
+
+To get our app to work with client-side routing, we use the `<Link>` component instead of anchor tags (`<a>`).  
+  
+EG. `<Link to="/about">About</Link>` will link to the `About` component (Assuming that `<Route path="/about" component={About} />` was set up)
+
+**On dynamic routing:**  
+  
+Essentially, dynamic routing is routing that takes place as our app is rendering. Any component that is mounted via the `<Route>` component will receive `match`, `history`, and `location` objects as props. Lets focus on the `match` object for now. Say we have a route that looks like:  
+  
+`<Route path='/books/:bookId' component={Book} />`  
+  
+`:bookId` in the URL is essentially a variable for the actually path that the user navigates too. We can access the value of `:bookId` inside the `<Book>` component by referencing `props.match.params.bookId`. For example, if the user navigates to "/books/10", `props.match.params.bookId` inside `<Book>` would equal 10. And the `<Book>` component displays different data as the `:bookId` changes.
+
+**On passing down props via `<Route>`:**
+
+What if we wanted to pass down data to the component specified in `<Route>`?  
+  
+We can use render props. `render` is a prop on the `<Route>` component that takes in a function that returns the component that we want to render. We can pass down data via render props like so :
+
+```javascript
+<Route render={(props) => (
+  <MyComponent 
+    someProp={someData} 
+    someOtherProp={moreData} 
+    match={props.match}
+    history={props.history}
+    location={props.location}
+  />
+)}/>
+```
+
+Using the ES6 spread operator, it would look like: 
+
+```javascript
+<Route render={(props) => (
+  <MyComponent 
+    {...props}
+    someProp={someData} 
+    someOtherProp={moreData} 
+  />
+)}/>
+```
+
+**On nested routes:**
+  
+Say we have a `<Product>` component that renders when a user goes to `/products/:productId`, and there's a section that has tabs for `Details` and `Shipping`. We want to mount and render nested components under the tabs (when they're clicked) while updating the URL based on the active tab. (I.e. `/products/:productId/details`, `products/:productId/shipping`). However, when switching between tabs, we don't want to re-render the whole `<Product>` component.  
+  
+`<Route />` is just a component. So if we want to nest a set of routes inside another route, we can just render those child Route components inside a parent Route component!  
+  
+On the `history` prop:  
+In some cases, we want to load different routes or components in response to events other than a user clicking on a `<Link/>`. We can use the `<Route>` component's `history` prop to do this.  
+  
+Remember when I noted: *Any component that is mounted via the `<Route>` component will receive `match`, `history`, and `location` objects as props.*  
+  
+By putting `props.history.push(<new URL path>)` inside an event handler function, our app will navigate to that path when the event is triggered. For example:
+
+```javascript
+function Home(props) {
+  return (
+    <div>
+      <h1>Home</h1>
+      <button onClick={todaySpecials}>Today's Specials!</button>
+    </div>
+  );
+
+  function todaySpecials() {
+    props.history.push('/specials/')
+  }
+}
+```
+
+**On `<Link>` vs `<NavLink>`:**
+
+The `<Link>` component renders an anchor tag with an href of the path we have specified on it.  
+The `<NavLink>` component is almost identical to the `<Link>` component there's just one difference. It adds the class `active` to the anchor tag when the URL matches the path in the `<NavLink>` component. With this feature, we can now style our navigation based on which route we are on!  
+  
+Also, if we want the class to be a different name, we can use the `activeClassName` prop on the `<NavLink>` component to set it to something else. For example:
+
+```javascript
+<NavLink to="/" activeClassName="activeNavButton">Home</NavLink>
+<NavLink to="/about" activeClassName="activeNavButton">About</NavLink>
+```
+
+<br />
+
+---
+
+Although the past week was tough, I'm enjoying React overall. Looking forward to pushing through and building an awesome project in the upcoming Build Week!
+
+</MDXWrapper>

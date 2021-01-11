@@ -1,0 +1,79 @@
+---
+title: August Update
+date: 2019-08-04
+slug: august-update
+template: post
+author: Jack Kim
+tags: ['react.js', 'web development']
+excerpt: "Finished Lambda School's Intro to React sprint last Friday!"
+---
+
+<MDXWrapper>
+
+Finished Lambda School's Intro to React sprint last Friday!
+
+I was excited and somewhat nervous to finally dive into the React.js section of the curriculum. Week one covered React components, component state, and passing data via props.
+
+React.js is a JS library for building user interfaces.
+
+Reasons for using React.js:
+
+  * __Component-based__: you can build separate, encapsulated components that can manage their own state
+  * __Declarative__: Declarative code emphasizes **what** whereas imperative emphasizes **how**. Writing declarative code makes your code more predictable and easier to debug.
+  * __Unidirectional Data Flow__: when State/data is changed React will update and render the right UI components to reflect the changes
+  * __Virtual DOM__: improves DOM update performance and makes working with the DOM easier
+
+A couple of concepts I struggled with initially were state and props.
+
+**State** is basically the condition of a program regarding it's data. I.e. the state shows its current data.
+
+`const [state, setState] = useState(true);`
+
+Having never seen destructuring before, it took a while for my mind to get comfortable with this. Essentially, `useState(true)` will return a pair of values: the current state (`true`) and a function that updates the state. If we want to update the state to `false`, we would call `setState(false)`.
+
+Props are how React passes data from one component to another. They're basically an object of JSX attributes and values. E.g.
+
+```javascript
+<Example prop1={'Hi'} prop2='Bye' />
+```
+The `props` inside the Example component would be:
+
+```javascript
+{ prop1: 'Hi',   prop2: 'Bye' }
+```
+
+In week two, we covered Component side effects, how to sync side effects and fetch data using the effect hook, and how to use Semantic UI and styled-components to style React components. 
+
+**Side effects** are anything that affects something outside of the scope of the function being executed. Fetching data from an API, timers, logging and manually manipulating the DOM are some examples. 
+
+The effect hook tells React that a component needs to execute some side effect. 
+
+Example:      
+```javascript
+// Making API calls     
+const [user, setUser] = setState();     
+const [error, setError] = setState();     
+useEffect(() => {       
+  fetchUserData(userId)         
+    .then(res => setUser(res.data.user))         
+    .catch(err => setError(err.response.message));     
+}, []);
+```
+
+The first argument is a callback function where we can run the side effect, and the second (optional) argument is a dependency array, where we can specify certain state or props to sync our side effect with. In the example above, the callback will fire off only once when the component mounts due to the empty dependency array. 
+
+The second week material was fairly straightforward and was easier for me to grasp than the first week's. 
+
+For this section's Sprint Challenge, the project MVP requirements were: 
+
+- Fetch a list of Star Wars characters from the Star Wars API  
+- Set the data you fetch to state  
+- Map over the list and render a component for each character onto the page  
+- Style the elements with either SemanticUI or styled-components 
+
+I managed to complete the MVP early without running into any big issues.  
+Link to Github repo: <https://github.com/jskway/Sprint-Challenge-React-Wars/tree/master>
+
+Overall it was a great couple of weeks and I'm looking forward to learning about React router and building Single Page Applications!
+
+</MDXWrapper>

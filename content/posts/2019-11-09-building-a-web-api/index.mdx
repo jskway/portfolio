@@ -1,0 +1,176 @@
+---
+title: Building a Web API
+date: 2019-11-09
+slug: building-a-web-api
+template: post
+author: Jack Kim
+tags: ['node', 'express', 'middleware', 'heroku', 'lambda school']
+excerpt: ""
+---
+
+<MDXWrapper>
+
+<ImageWrapper>
+
+![nodejs logo](./images/nodejs-logo.png)
+
+</ImageWrapper>
+
+
+Node.js and Express were the focus of my studies over the past two weeks.
+
+The Lambda School curriculum covered:
+- The main features of Node.js and Express
+- How to use Postman to manually test web APIs
+- How to create a CRUD web API
+- Using Express routers to organize our code
+- What middleware is and how to implement them
+- Setting up .env files and deploying to Heroku
+
+<br />
+
+### Node and Express
+
+**Node.js** is a JavaScript runtime (program that runs other programs) built on
+Chrome's V8 engine.  It allows us to run JavaScript outside the browser.  The
+most common use cases are utilities and server code.
+
+**Express** is a web framework for Node.js.  It sits on top of Node's native 'http'
+module.  It provides extra functionality like routing and middleware support -
+with a simpler API.  We can think of it like React for the backend.
+
+**Middleware:** functions that receive the request and response objects.  The
+middleware function can operate on them (optional) and return a response or
+call the next middleware in the pipeline. 
+
+Express's middleware stack is made up of an array of functions.
+
+**Routing**: The process of determining which request handler function is
+executed based on the URL visited and the HTTP method used.  
+
+A **resource** is the target of an HTTP request, identified by a URI.  It can be
+a document, a photo, JSON object, or anything else.
+
+### HTTP Status Codes
+
+From Wikipedia: *Status codes are issued by a server in response to a client's
+request made to the server.  All HTTP status codes are separated into five
+categories:*
+
+- 1xx Informational – the request was received, continuing process
+- 2xx Successful – the request was successfully received, understood and accepted
+- 3xx Redirection – further action needs to be taken in order to complete the request
+- 4xx Client Error – the request contains bad syntax or cannot be fulfilled
+- 5xx Server Error – the server failed to fulfill an apparently valid request
+
+**Simple example of a Express server:**
+
+```javascript
+const express = require('express');
+
+const server = express();
+
+server.get('/', (req, res) => {
+  res.send('Hello World');
+});
+
+server.get('/hobbits', (req, res) => {
+  const hobbits = [
+    {
+      id: 1,
+      name: 'Samwise Gamgee',
+    },
+    {
+      id: 2,
+      name: 'Frodo Baggins',
+    },
+  ];
+
+  res.status(200).json(hobbits);
+});
+
+server.listen(8000, () => console.log('API running on port 8000'));
+```
+
+**API** stands for Application Programming Interface.  Essentially a communication
+protocol that specifies how clients and servers should interact. We can think of
+an API as a waiter in a restaurant.  We (the client) enter the restaurant and view
+the menu, then give the waiter our order.  The waiter brings our request to the
+kitchen (server) and then brings back to us what we ordered.
+
+### Express Routers & Middleware
+
+We can use Express Routers to split an application into sub-applications to make
+it more modular and easier to maintain.
+
+Middleware is the biggest part of Express.  Most of the code we write, including
+route handlers, is middleware under the hood.
+
+We can think of middleware as an array of functions that get called in the order
+they are introduced in the server code.
+
+There are different types of middleware.
+
+**Built-in middleware** is included with Express, but not added to the
+application automatically.  I.e. `server.use(express.json());`
+
+**Third party middleware** are npm modules that we install and import into our
+apps using `require()`. Eg. [morgan](https://www.npmjs.com/package/morgan) (for logging) and [helmet](https://www.npmjs.com/package/helmet) (for security).
+
+**Custom middleware** are functions that we write to perform certain tasks.  
+
+Example of custom error handler middleware:
+```javascript
+server.use((err, req, res, next) => {
+  console.error(err);
+
+  res
+    .status(500)
+    .json({ message: 'There was an error performing the required operation' });
+});
+// We want to have error handlers at the end of our file so it's the last
+// function in our middleware stack.  If no response is returned from any of the
+// functions and next() is called, then this error handler will run 
+```
+
+<br />
+
+### Deployment & Best Practices
+
+Most development pipelines have different environments that often include:
+development, testing, and production.  It's good practice to extract away any
+values that need to change between environments, like database connections.
+
+We can do this by adding a `.env` file to the root folder that stores these
+values.  And then using the `dotenv` module along with Node's `process.env`
+object in our index.js file.
+
+Example: 
+```javascript
+// it's recommended to load configuration for .env as early as possible
+require('dotenv').config(); // add this line as the first thing to run1
+
+const server = require('./api/server.js');
+
+// we'll read the port from the server environment if it is there
+// heroku will have the PORT environment variable set
+const port = process.env.PORT || 5000;
+
+// we can now use that port, if set up by heroku or read from .env or 5000 as a default if not set
+server.listen(port, () => {
+  console.log(`\n*** Server Running on http://localhost:${port} ***\n`);
+});
+```
+
+<br />
+
+---
+
+Overall, the last two weeks were a welcome interlude from working on front-end
+and React code.  Node.js and especially Express was enjoyable to work with.
+It's cool to get a understanding of how the APIs I've been making requests
+to are built and organized.  I'm excited to dive into SQL and authentication 
+and then combine all of my experience to built an actual full stack application.  
+
+
+</MDXWrapper>

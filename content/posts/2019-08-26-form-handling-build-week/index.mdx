@@ -1,0 +1,66 @@
+---
+title: Form Handling & Build Week
+date: 2019-08-26
+slug: form-handling-build-week
+template: post
+author: Jack Kim
+tags: ['javaScript', 'react', 'lambda school']
+excerpt: "Since my last post, I've learned how to handle forms in React, completed the Sprint Challenge for SPAs (Single Page Applications), and..."
+---
+
+<MDXWrapper>
+
+
+Since my last post, I've learned how to handle forms in React, completed the Sprint Challenge for SPAs (Single Page Applications), and started on my second Build Week project.
+
+---
+
+The Lambda curriculum covered two ways to handle forms.  
+  
+The first way was using React props, state and event handlers. Essentially, we set up the form, set up state to track input values, add an `onChange` prop on `<input />` elements, and assign the `onChange` prop an event handler that takes in the `event` object and updates the state to `event.target.value`. We also add an `onSubmit` prop to the form's `<button>` element and assign it a submit handler. 
+
+I also encountered computed property names for the first time.  
+  
+Example:
+
+```javascript
+let myObject = { 1: "sup", 2: "hey" };
+
+let computedProperty = 1;
+
+myObject[computedProperty]; // "sup";
+myObject[1 + 1]; //"hey";
+```
+
+The second way to handle forms was via the Formik and Yup libraries. Formik is cool because it allows us to abstract away much of the state-management and change-handling. Yup is awesome for validating user inputs and handling errors. 
+
+Documentation links:  
+- <https://jaredpalmer.com/formik/docs/api/formik>  
+- <https://github.com/jquense/yup>
+
+We also learned how to make POST requests to pass data collected from a form to a database (using axios). This was pretty straightforward. EG. `axios.post("https://url-to-post-to", values).then....`
+
+---
+
+This module's Sprint Challenge was the toughest so far. 
+
+It involved:  
+- Making GET requests to three different end points  
+- Displaying the API results using a card grid or list UI (I personally used `semantic-ui`)  
+- Adding routes for each component and setting up a tab bar navigation with `<NavLinks>` to each component  
+  
+We were also given instructions to add a `<SearchForm />` component and use the custom hook `useLocalStorage`, which we hadn't covered yet. Apparently this Sprint Challenge wasn't updated to reflect the recent changes made to the curriculum. This caused a lot of confusion and frustration for us, but thankfully the instructors and team leads notified us that these features were not required to meet the MVP passing requirements.  
+  
+Repo Link: <https://github.com/jskway/Sprint-Challenge-Single-Page-Apps>
+
+---
+
+This past week (and the next) was our second Build Week project. This time we're actually collaborating with another cohort! My team consists of three UI developers, two front-end developers (including myself), and our Project Lead. Our project name is TSTUFF, which is an app for tech enthusiasts who want to rent or rent out tech equipment (like AirBnb for tech equipment). 
+
+The UI developers are building our the marketing page (which was my first build week project) and my partner Julian and I are building the front-end of the app. The backend we're using was prebuilt and we were provided with documentation for the different endpoints we need to access.  
+  
+I definitely felt a bit lost about where to start and how to approach state handling, routing, setting up components, etc. I ended up making a basic user flow chart and it helped me a ton to visualize and plan out everything (<https://docs.google.com/drawings/d/1ZMMZnvnQqBgr7RuqAR1MhTTgLffWFjqX8FgoU80BMEQ/edit?usp=sharing>).
+
+Overall it's been a busy couple of weeks, and I'm looking forward to completing the project and seeing how it turns out!
+
+</MDXWrapper>

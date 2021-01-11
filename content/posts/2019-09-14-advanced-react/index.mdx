@@ -1,0 +1,76 @@
+---
+title: Advanced React
+date: 2019-09-14
+slug: advanced-react
+template: post
+author: Jack Kim
+tags: ['javascript', 'react', 'web development']
+excerpt: "The past two weeks at Lambda School were dedicated to learning Advanced React..."
+---
+
+<MDXWrapper>
+
+<ImageWrapper>
+
+![](http://blog.addthiscdn.com/wp-content/uploads/2014/11/addthis-react-flux-javascript-scaling.png)
+
+</ImageWrapper>
+
+The past two weeks at Lambda School were dedicated to learning Advanced React.
+
+The Advanced React module covered:
+
+  * Class Components
+  * The React Lifestyle
+  * Composing and Sharing Non-visual Behavior (via custom hooks)
+  * Testing Web Applications
+
+#### Class Components
+
+It felt strange working with class components after getting used to functional components and hooks. I definitely prefer functional components, especially now that hooks are gaining widespread popularity. However, I understand that a lot of projects will still have class components in them and I need to be prepared when I see them.
+
+#### The React Lifecycle
+
+Learning about the [React lifecycle](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/) and the lifecycle methods helped me get a much better understanding of what's going on "under the hood". It also helped understand how `useState` and `useEffect` methods actually work as well.
+
+You can think of the [React lifecycle](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/) as a set of three phases in a component's life:  
+- Birth(Mounting)  
+- Growth(Updating)  
+- Death(Unmounting)
+
+Lifecycle methods, are methods (eg. `constructor`, `componentDidMount`, `render`, etc. ) that we can use to run code in certain phases of the React lifecycle.
+
+The **Birth/Mounting** phase is when the component is being built out from the ground up. Whatever initial data you'll have access to will be defined on the `constructor` of this phase. Your `render` method is invoked. `componentDidMount`, which is used for any async actions, gets called as well.
+
+In the **Growth/Updating** phase, `setState` can be used to change the component's state data, forcing a call to `render`. `shouldComponentUpdate` is a method one could use here to stop a component from calling render if necessary.
+
+In the **Death/Unmounting** phase, the component is removed from the screen. `componentWillUnmount` is called and can be used for any clean up.
+
+#### Composing and Sharing Non-Visual Behavior
+
+Stateful logic is logic that is built into a component. EG. a function that handles a click event or keypress event, or a function that sets toggle state, or even a function that formats data passed to the component before it's displayed. Usually this kind of logic deals with state in the component - thus 'stateful logic'.
+
+You can use custom hooks for applying non-visual behavior and stateful logic throughout your components. You can build reusable custom hooks for uses such as: handling controlled inputs, managing event listeners, watching for key presses, using localStorage, etc.
+
+#### Testing Web Applications
+
+Automated testing minimizes the risk of bugs finding their way into production code, as well as:
+
+  * Reduces the risk of regressions
+  * Allows us to trust the code
+  * Makes us think about the edge cases
+  * Acts as a safety net when making changes or refactoring
+  * Acts as documentation for the code
+  * Encourages us to write more testable code
+
+Common levels of testing:
+
+  * **Unit Testing** - they test the smaller units of a software (often functions or methods) in isolation. There are usually many unit tests in a codebase, and because these tests are meant to be run often, they need to run fast
+  * **Integration Testing** - several units of a software are tested as a group to make sure they work together correctly
+  * **E2E (End-to-end) Testing** - where the whole application is tested, simulating real user scenarios closely. Because these tests are slow and expensive, it's desirable that there be a "thick cushion" of unit tests in a codebase 
+
+---
+
+My Sprint Challenge Repo: <https://github.com/jskway/Sprint-Challenge-Advanced-React>
+
+</MDXWrapper>

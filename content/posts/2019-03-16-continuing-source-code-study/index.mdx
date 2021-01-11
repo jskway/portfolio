@@ -1,0 +1,42 @@
+---
+title: Continuing Source Code Study
+date: 2019-03-16
+slug: continuing-source-code-study
+template: post
+author: Jack Kim
+tags: ['javascript', 'web development']
+excerpt: "Spent a few hours over the past couple of days continuing to read through source code of jQuery Todo MVC app..."
+---
+
+<MDXWrapper>
+
+
+Spent a few hours over the past couple of days continuing to read through source code ([jQuery Todo MVC app](https://github.com/gordonmzhu/todomvc/tree/master/examples/jquery)).
+
+The time was mostly spent examining the features in app.js. 
+
+The Chrome debugger has been a huge help in working through the features and analyzing how different functions and values change in response to different events.
+
+It was mostly a matter of getting familiar with the vocabulary and syntax, logically thinking things through and looking at documentation, so I don't have many notes. But here are some:
+
+**MVC**: Model-View-Controller
+
+MVC separates the concerns in an application down into three parts:
+
+**Models** represent the data in an application. Think of things being a *type* of data you can model - like a User, Photo, or Note.
+
+**Views** are typically considered the UI in an application (eg. your markup and templates) but don't have to be. They should know about the existence of Models in order to observe them, but don't directly communicate with them.
+
+**Controllers** handle the input (eg. clicks, user actions) in an application and Views can be considered as handling the output. 
+
+`Array.filter( [callback function] )` creates a new array with all elements that pass the test implemented by the provided function.
+
+The **Call Stack** is the list of functions/methods that have been called to get us to the current moment in execution (in a program).
+
+**Method chaining** is when you call multiple methods on the same object consecutively. In order for method chaining to work, the previous method must return `this`.
+
+---
+
+Also got accepted into Lambda School on Wednesday, can't wait for classes to start in April!
+
+</MDXWrapper>

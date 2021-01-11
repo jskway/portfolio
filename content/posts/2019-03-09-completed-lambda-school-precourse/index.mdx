@@ -1,0 +1,52 @@
+---
+title: Completed Lambda School Precourse
+date: 2019-03-09
+slug: completed-lambda-school-precourse
+template: post
+author: Jack Kim
+tags: ['javascript', 'web development']
+excerpt: "Most of it was review but the last couple of sections on classes and prototypes took some extra time to get reacquainted with the concepts."
+---
+
+<MDXWrapper>
+
+
+Most of it was review but the last couple of sections on classes and prototypes took some extra time to get reacquainted with the concepts.
+
+
+**Control Flow** is the order in which various parts of a program are executed (usually in response to conditional statements).
+
+**Logical Operators** are used to combine two equality expressions (`<, <=, >, >=, ===, !==`) and ask if either of them are true (`||`), both of them are true (`&&`), or neither of them is true (`!`).
+
+The `return` statement is the only way for data to escape a function. Nothing other than what is returned can be accessed from outside of the function.
+
+`.unshift([item])` will put a new item in the front of an array.
+
+`.shift()` will remove the first item in the array.
+
+`.map([callback])`will apply the callback function to each item in the array and return the new array (with returned values)
+
+When to use bracket notation over dot notation for objects? If you&#8217;re using a variable as the object key to access the value.
+
+The `delete` keyword can be used to remove object properties from an object, but best practice is to just set the value to `undefined.`
+
+`for..in` loops can be used to iterate over `key:value` pairs in objects. EG. 
+```javascript
+for(let key in obj) {
+  console.log(obj[key];
+}
+```
+  
+**Classes** in JS are really just functions that will return an object. These type of functions are known as _class constructors_ and the objects are known as _classes._ 
+
+When the `new` keyword is placed in front of a function call, JS will treat the function as a class constructor.  
+  
+We use classes to create objects that have the same &#8216;style&#8217; of data and methods.
+
+Creating functions are expensive (on computer memory) and each time we create a new class object with methods, we are recreating those methods in memory. Each class has a common repository for methods, known as the _prototype._ By setting methods on the prototype of the class (rather than on the class itself), every instance of the class can use the same function while substantially reducing the memory used.
+
+--- 
+
+Also signed up for Watch & Code premium tonight. Looking forward to starting on that tomorrow!
+
+</MDXWrapper>

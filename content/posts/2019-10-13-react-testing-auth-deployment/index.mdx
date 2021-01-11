@@ -1,0 +1,142 @@
+---
+title: Testing, Authentication & Deployment in React
+date: 2019-10-13
+slug: react-testing-auth-deployment
+template: post
+author: Jack Kim
+tags: ['react', 'testing', 'authentication', 'zeit', 'lambda school']
+excerpt: "Over the past two weeks, I learned: How to use Snapshot testing..."
+---
+
+<MDXWrapper>
+
+Over the past two weeks, I learned:
+- How to use Snapshot testing
+- How to test async code
+- How to handle authentication with tokens in a React app
+- A high level overview of the world wide web and how it operates
+- ZEIT and how simple it is for deploying web apps
+- Making authenticated PUT/DELETE requests with tokens
+
+<br />
+
+### Snapshots / Async Testing
+
+Snapshot testing is a useful tool for detecting unexpected changes to a component's UI.
+
+A **snapshot** is a `JSON` representation of a component's output.  When the  tests run, the current output of the component (snapshot) is compared to the  saved snapspot.  If anything has changed, the test fails.
+
+
+I like how simple it is to implement snapshot tests, but don't see many benefits to implementing them in my personal projects yet.
+
+**Asynchronous** tests are special kinds of tests that need to wait for the results of one or more asyncronous operations.
+
+There are different ways to do this in Jest, but our instructor Brian showed us that using `async` and `await` is the most popular method nowadays.  
+
+Here's an example from the lecture:
+```javascript
+import React from "react";
+import { render, fireEvent } from "@testing-library/react";
+
+import Message from "./Message";
+
+test("it renders", () => {
+  render(<Message />);
+});
+
+test("it renders Success! upon success", async () => {
+  const { queryByText, getByText } = render(<Message />);
+
+  expect(queryByText(/success/i)).toBeNull();
+
+  // Will wait for this line to finish before continuing
+  await fireEvent.click(getByText(/Get message!/i));
+
+  expect(getByText(/success/i));
+});
+```
+
+<br />
+
+### Mocks
+
+When testing our app functions, we may run into issues like impure functions (due to dependencies like `uuid`), or needing to test if callbacks were invoked - with the correct arguments.  
+
+We can use **mock** functions to solve these issues.
+
+Mock functions can simulate the behavior of the real modules. (Eg. create a fake `uuid` mock that returns the same id each time).
+
+They can also be used to *spy* on callback functions. Mock functions can keep track of calls to the function, as well as the arguments passed into those calls.
+
+### Authentication
+
+**Tokens** are encrypted strings that are returned from the server upon a successful login POST request. We can store tokens in local storage (or session storage) and use them in headers (of server requests) to access protected resources that require authentication.
+
+**Example of token usage:**
+```javascript
+import axios from 'axios';
+
+export const axiosWithAuth = () => {
+  const token = localStorage.getItem('token');
+  return axios.create({
+    baseURL: "http://localhost:5000/api",
+    headers: {
+      Authorization: token
+    }
+  });
+};
+```
+
+Once we have authentication set up, we can use protected routes to keep our data secure from unauthorized users.
+
+**Example of a protected route component:**
+```javascript
+import React from 'react';
+import { Route, Redirect } from 'react-router-dom';
+
+function PrivateRoute({component: Component, ...rest}) {
+  return (
+    <Route
+      {...rest}
+      render={ props => { 
+        return localStorage.getItem('token')
+          ? <Component {...props} />
+          : <Redirect to="/" />
+      }}
+    />
+  );
+};
+
+export default PrivateRoute;
+```
+
+<br />
+
+### Web Servers & Deployment
+
+**A VERY simplified web server summary:**
+
+The internet is basically a network of interconnected computers. The world wide web is a part of the internet. It's made up of data stored on web servers around the world.
+
+Web server refers to two things:
+1. A computer that stores the code for a web resource
+2. The software program that tells the server what to do when it receives a
+   request from the client-side
+
+We locate a specific server computer via a URL and domain name, and it returns information/resources based on the type of request.
+
+Deploying a web app means finding a web server for the code to live on so it can be served on the web. There are many different hosting providers such as AWS, Google servers, Netlify, Heroku, Gatsby, ZEIT, etc. 
+
+These providers and services make it easy to deploy static web apps - often with a few simple steps.
+
+Using ZEIT was straightforward and I was impressed with their UI/UX as well. I've preferred Netlify up to this point but I'll be experimenting more with ZEIT in the future. 
+
+---
+
+Overall it was a solid two weeks at Lambda School.  
+
+Up next is our third Build Week project.  I'm excited to test my skills and see how far my team can take the project!
+
+
+</MDXWrapper>
+

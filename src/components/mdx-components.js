@@ -74,4 +74,8 @@ export const MDXWrapper = styled.section`
 
 export const ImageWrapper = styled.div`
   margin: 50px 0;
+
+  img {
+    max-width: 90%;
+  }
 `

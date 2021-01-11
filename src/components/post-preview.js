@@ -5,6 +5,7 @@ import styled from "styled-components"
 const Article = styled.article`
   display: flex;
   flex-direction: column;
+  margin: 10px 0;
 `
 
 const H2 = styled.h2`

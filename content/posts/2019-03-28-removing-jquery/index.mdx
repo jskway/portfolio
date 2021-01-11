@@ -1,0 +1,48 @@
+---
+title: Removing jQuery
+date: 2019-03-28
+slug: removing-jquery
+template: post
+author: Jack Kim
+tags: ['javascript', 'web development']
+excerpt: "I spent the last week removing jQuery from the Todo MVC app and replacing it with vanilla JavaScript..."
+---
+
+<MDXWrapper>
+
+I spent the last week removing jQuery from the Todo MVC app and replacing it with vanilla JavaScript. (Result: https://glitch.com/~courageous-sandalwood)
+
+I struggled at first and realized how useful some jQuery functions are at simplifying certain things. Such as event delegation + method chaining combined with specific selectors. Eg. 
+```javascript
+Element
+  .on('click', '.class', [callback])
+  .on('dblclick', 'label', [callback])
+  .on...
+``` 
+
+Also I'm much more comfortable with *Handlebars.js* and templating in general, as well as routing and local storage.
+
+**Some notes:**
+
+`Handlebars.compile([htmlTemplate])` takes in an HTML template in String format, and returns a function. This function can be passed in data, whose values will replace the corresponding variables in the html template.
+
+EG.
+ ```javascript
+var data = {title: 'I'm a Title!'} 
+var htmlTemplate = '<div>{{title}}</div>';
+var handlebarsTemplate = Handlebars.compile(htmlTemplate);
+handlebarsTemplate(data)
+// returns "<div>I'm a Title!</div>"
+```  
+
+
+In Handlebars.js, the syntax for looping through an array that's a property of an object is:
+```javascript
+{{#[propertyname]}} {{/propertyname}}
+```
+
+If you want to pass in an array directly and loop through it, we can use: `{{#this}} {{/this}}`
+
+Next exercise is to remove certain functions from the app, and then fix it by reimplementing the function.
+
+</MDXWrapper>
